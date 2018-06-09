@@ -4,6 +4,11 @@
 module.exports = [
     {
         name: '首页',
+        redirect: '/home',
+        path: '/'
+    },
+    {
+        name: '首页',
         path: '/home',
         component: resolve => require.ensure(['../pages/home.vue'], require => require(['../pages/home.vue'], resolve), 'pages/home')
     },

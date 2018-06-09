@@ -14,6 +14,7 @@ const router = new VueRouter({
     routes
 });
 
+
 router.afterEach((to, from) => {
     // window.document.title = to.name
     title(to.name)

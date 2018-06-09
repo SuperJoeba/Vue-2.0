@@ -18,7 +18,8 @@ const config = {
 
     output: {
         filename: "[name].[hash].js",
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        // publicPath: "http://deploy.com:8081/#/home"
     },
 
     module: {
