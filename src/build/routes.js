@@ -2,11 +2,11 @@
 // 页面路由
 
 module.exports = [
-    {
-        name: '首页',
-        redirect: '/home',
-        path: '/'
-    },
+  {
+    name: '首页',
+    path: '/',
+    component: resolve => require.ensure(['../pages/home.vue'], require => require(['../pages/home.vue'], resolve), 'pages/home')
+  },
     {
         name: '首页',
         path: '/home',

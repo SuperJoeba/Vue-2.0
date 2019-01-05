@@ -18,8 +18,7 @@ const config = {
 
     output: {
         filename: "[name].[hash].js",
-        path: path.resolve(__dirname, 'dist'),
-        // publicPath: "http://deploy.com:8081/#/home"
+        path: path.resolve(__dirname, 'dist')
     },
 
     module: {
@@ -120,6 +119,7 @@ if (isDev) {
         new webpack.HotModuleReplacementPlugin()
     )
 } else {
+    config.output.publicPath = './'
     config.optimization = {
 
         // 代码丑化
