@@ -35,7 +35,7 @@
         methods: {
             Login() {
                 debugger;
-                location.href = '#/login';
+                location.href = '/login';
             }
         }
 
