@@ -106,8 +106,8 @@ if (isDev) {
         historyApiFallback: true,
         hot: true,
         compress: true,
-        host: '0.0.0.0',
-        port: 8080,
+        host: '127.0.0.1',
+        port: 8090,
         overlay: {
             errors: true
         },
