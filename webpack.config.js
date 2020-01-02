@@ -28,8 +28,8 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-                        scss: 'vue-style-loader!css-loader!sass-loader'
+                        sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
+                        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader'
                     }
                 }
             },
@@ -37,18 +37,38 @@ const config = {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
+                    loader: 'babel-loader'
                 }
 
             },
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader',
+                  {
+                    loader: "style-loader"
+                  },
+                  {
+                    loader: "css-loader",
+                    options: {
+                        importLoaders: 2 // 处理@import
+                    }
+                  },
+                //   {
+                //     loader: "postcss-loader",
+                //     options: {
+                //         plugins: [
+                //           require('autoprefixer')({browsers: ['last 5 versions']}),
+                //         ]
+                //       }
+                //   },
+                  {
+                    loader: "px2rem-loader",
+                    options: {
+                        remUnit: 75,
+                        remPrecision: 8
+                    }
+                  },
+                  'postcss-loader'
                 ]
             },
             {
@@ -56,6 +76,14 @@ const config = {
                 use: [
                     'style-loader',
                     'css-loader',
+                  {
+                    loader: "px2rem-loader",
+                    options: {
+                      remUnit: 75,
+                      remPrecision: 8
+                    }
+                  },
+                  'postcss-loader',
                     'sass-loader'
                 ]
             },
@@ -64,11 +92,19 @@ const config = {
                 use: [
                     'style-loader',
                     'css-loader',
+                  {
+                    loader: "px2rem-loader",
+                    options: {
+                      remUnit: 75,
+                      remPrecision: 8
+                    }
+                  },
+                  'postcss-loader',
                     'less-loader'
                 ]
             },
             {
-                test: /\.(jpg|png|gif|jpeg|svg)$/,
+                test: /\.(jpg|png|gif|jpeg|svg|eot)$/,
                 use: {
                     loader: "url-loader",
                     options: {
@@ -104,6 +140,9 @@ if (isDev) {
     config.devServer = {
         clientLogLevel: 'warning',
         historyApiFallback: true,
+        // historyApiFallback: {
+        //     index: './index.html'
+        // },
         hot: true,
         compress: true,
         host: '127.0.0.1',
@@ -112,7 +151,14 @@ if (isDev) {
             errors: true
         },
         open: true,
-        openPage: '#/home'
+        openPage: 'home',
+        proxy: {
+            "/api": {
+              target: "https://apis.map.qq.com/ws/district/v1/list",
+              changeOrigin: true, // 必填配置，否则无法正确代理
+              pathRewrite: {"^/api" : ""}
+            }
+        }
     };
 
     config.plugins.push(
@@ -131,7 +177,9 @@ if (isDev) {
                 uglifyOptions: {
                     compress: false,
                     ecma: 6,
-                    mangle: true
+                    mangle: {
+                        safari10: true
+                    }
                 },
                 sourceMap: true
             })

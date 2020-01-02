@@ -1,30 +1,34 @@
-<style lang="scss">
+ <style lang="scss" scoped>
+    @import "../assets/css/scss/global";
     #container {
         width: 100%;
         height: auto;
         text-align: center;
+        display: flex;
+        border-bottom: 1px solid red;
 
         h1 {
             color: #42b983;
         }
 
         form div {
-            margin: 30px;
+            margin: 60px;
         }
         button {
             color: #fff;
-            width: 80px;
-            height: 30px;
+            width: 160px;
+            height: 60px;
             background: #42b983;
-            border-radius: 5px;
+            border-radius: 10px;
             text-align: center;
-            margin: 20px;
+            margin: 40px;
         }
     }
 </style>
 <template>
     <div id="container">
-        <h1>{{ msg }}</h1>
+        <h1 class="test">{{ getMsg() }}</h1>
+        <button @click="notify">click Me</button>
         <form @submit.prevent="register" autocomplete="off">
             <div>
                 <label for="phone">手机号</label>
@@ -55,7 +59,19 @@
                 }
             }
         },
+        beforeUpdate () {
+          console.log(this.$data)
+        },
         methods: {
+            notify () {
+              this.$notify({
+                content: '这个是测试提示'
+              })
+            },
+            getMsg () {
+              console.log('msg updated')
+              return this.msg + '1'
+            },
             register () {
               let param = new URLSearchParams();
               param.append('memberMobile', this.form.memberMobile);
@@ -88,6 +104,15 @@
               id: 4
             },
             method: 'get'
+          }).then(res => {
+            console.log(res)
+          })
+          axios({
+            baseURL: '/api',
+            methods: 'get',
+            params: {
+              key: 'B22BZ-CTOKQ-6OE5F-GQYSI-VYXH5-H3F4Z'
+            }
           }).then(res => {
             console.log(res)
           })

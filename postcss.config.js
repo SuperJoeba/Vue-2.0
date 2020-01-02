@@ -1,9 +1,10 @@
-
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-    parser: 'sugarss',
+    loader: 'postcss-loader',
     plugins: [
-        autoprefixer()
+        autoprefixer({
+            browsers: ['last 5 versions']
+        })
     ]
 };
