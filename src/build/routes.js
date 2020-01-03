@@ -16,10 +16,5 @@ module.exports = [
         name: '登录',
         path: '/login',
         component: resolve => require.ensure(['../pages/login.vue'], require => require(['../pages/login.vue'], resolve), 'pages/login')
-    },
-    {
-      name: '视频',
-      path: '/videos',
-      component: resolve => require.ensure(['../pages/videos.vue'], require => require(['../pages/videos.vue'], resolve), 'pages/videos')
-  }
+    }
 ]
