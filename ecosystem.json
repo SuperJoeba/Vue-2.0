@@ -23,7 +23,6 @@
             "ref": "origin/master",
             "repo": "git@github.com:SuperJoeba/Vue-2.0.git",
             "path": "/code",
-            "pre-deploy": "git fetch --all",
             "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env production"
         }
     }
