@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style scoped>
 .notification {
   width: 250px;
   height: 50px;
@@ -8,13 +8,12 @@
   color: #fff;
   text-align: center;
   font-size: 14px;
-
-  .close-btn {
+}
+.close-btn {
     color: red;
     float: right;
     margin-right: 10px;
   }
-}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .5s;
