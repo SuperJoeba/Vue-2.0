@@ -7,6 +7,9 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@babel/runtime": "^7.5.5",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^0.20.0",
     "vue": "^2.5.16",
     "vue-loader": "^15.2.4",
     "vue-video-player": "^5.0.2",
