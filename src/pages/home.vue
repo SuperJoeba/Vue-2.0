@@ -28,7 +28,7 @@
 <template>
     <div id="container">
         <h1 class="test">{{ getMsg() }}</h1>
-        <button @click="notify">click Me</button>
+        <!-- <button @click="notify">click Me</button> -->
         <form @submit.prevent="register" autocomplete="off">
             <div>
                 <label for="phone">手机号</label>
