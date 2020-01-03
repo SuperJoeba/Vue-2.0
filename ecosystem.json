@@ -1,8 +1,8 @@
 {
     "apps": [
         {
-            "name": "API",
-            "script": "app.js",
+            "name": "vue-deploy",
+            "script": "server.js",
             "args": "one two",
             "instances": 1,
             "autorestart": true,
