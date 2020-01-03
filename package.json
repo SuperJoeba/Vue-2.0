@@ -1,5 +1,5 @@
 {
-  "name": "<%=name%>",
+  "name": "vue-deploy",
   "version": "1.0.0",
   "private": "<%=private%>",
   "description": "<%=description%>",
