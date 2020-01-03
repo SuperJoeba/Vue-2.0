@@ -1,29 +1,5 @@
- <style lang="scss" scoped>
-    @import "../assets/css/scss/global";
-    #container {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        display: flex;
-        border-bottom: 1px solid red;
-
-        h1 {
-            color: #42b983;
-        }
-
-        form div {
-            margin: 60px;
-        }
-        button {
-            color: #fff;
-            width: 160px;
-            height: 60px;
-            background: #42b983;
-            border-radius: 10px;
-            text-align: center;
-            margin: 40px;
-        }
-    }
+ <style scoped>
+   
 </style>
 <template>
     <div id="container">
