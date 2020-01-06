@@ -1,8 +1,23 @@
 {
     "apps": [
         {
-            "name": "vue-deploy",
-            "script": "server.js",
+            "name": "deploy-production",
+            "script": "production-server.js",
+            "args": "one two",
+            "instances": 1,
+            "autorestart": true,
+            "watch": true,
+            "max_memory_restart": "1G",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        },
+        {
+            "name": "deploy-development",
+            "script": "development-server.js",
             "args": "one two",
             "instances": 1,
             "autorestart": true,
@@ -22,7 +37,7 @@
             "host": "39.106.117.68",
             "ref": "origin/master",
             "repo": "git@github.com:SuperJoeba/Vue-2.0.git",
-            "path": "/code",
+            "path": "/code/production",
             "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env production"
         },
         "development": {
@@ -30,8 +45,8 @@
             "host": "39.106.117.68",
             "ref": "origin/test",
             "repo": "git@github.com:SuperJoeba/Vue-2.0.git",
-            "path": "/code",
-            "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env production"
+            "path": "/code/development",
+            "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env development"
         }
     }
 }
