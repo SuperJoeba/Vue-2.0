@@ -24,6 +24,14 @@
             "repo": "git@github.com:SuperJoeba/Vue-2.0.git",
             "path": "/code",
             "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env production"
+        },
+        "development": {
+            "user": "root",
+            "host": "39.106.117.68",
+            "ref": "origin/test",
+            "repo": "git@github.com:SuperJoeba/Vue-2.0.git",
+            "path": "/code",
+            "post-deploy": "npm install && npm run build && pm2 reload ecosystem.json --env production"
         }
     }
 }
