@@ -1,7 +1,6 @@
 {
     "apps": [
         {
-            "name": "deploy",
             "script": "server.js",
             "args": "one two",
             "instances": 1,
@@ -12,10 +11,12 @@
                 "COMMON_VARIABLE": "true"
             },
             "env_production": {
-                "NODE_ENV": "production"
+                "NODE_ENV": "production",
+                "name": "deploy"
             },
             "env_development": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "name": "deploy-dev"
             }
         }
     ],
