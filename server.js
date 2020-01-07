@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const compression = require('compression');
 const proxy = require('http-proxy-middleware');
+const env = process.env.NODE_ENV;
 
 app.use(compression());
 app.use(express.static(path.resolve(__dirname, './dist')))
@@ -17,4 +18,8 @@ app.get('*', function(req, res) {
     res.send(html)
 })
 
-app.listen(8083);
+if (env === 'production') {
+    app.listen(8082);
+} else {
+    app.listen(8083)
+}
